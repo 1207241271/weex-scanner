@@ -1,0 +1,12 @@
+{
+    "version": "0.0.1",
+    "platform": [
+        "ios"
+    ],
+    "description": "weex mapview component",
+    "keywords": [
+        "weex",
+        "map"
+    ],
+    "name": "weex-xc-scanner"
+}

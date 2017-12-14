@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin id="weex-xc-scanner"
+        version="0.0.1">
+    <name>weex-xc-scanner</name>
+    <author></name>
+    <description>weex scanner</description>
+    <keywords>weex</keywords>
+
+    <platform name="ios">
+        <config-file parent="/*" target="WeexpluginConfig.xml">
+            <feature name="WeexScannerModule">
+                <param name="category" value="module"/>
+                <param name="ios-package" value="WeexScannerModule"/>
+                <param name="api" value="weex-scanner"/>
+            </feature>
+        </config-file>
+
+    <source-file src="ios/Sources/WeexScannerModule.m"/>
+    <header-file src="ios/Sources/WeexScannerModule.h"/>
+    <header-file src="ios/Sources/SGQRCodeScanningVC.h"/>
+    <source-file src="ios/Sources/SGQRCodeScanningVC.m"/>
+    <header-file src="ios/Sources/SGQRCode/Category/UIImage+ImageSize.h"/>
+    <source-file src="ios/Sources/SGQRCode/Category/UIImage+ImageSize.m"/>
+    <header-file src="ios/Sources/SGQRCode/SGQRCode.h"/>
+    <header-file src="ios/Sources/SGQRCode/SGQRCodeAlbumManager.h"/>
+    <source-file src="ios/Sources/SGQRCode/SGQRCodeAlbumManager.m"/>
+    <header-file src="ios/Sources/SGQRCode/SGQRCodeGenerateManager.h"/>
+    <source-file src="ios/Sources/SGQRCode/SGQRCodeGenerateManager.m"/>
+    <header-file src="ios/Sources/SGQRCode/SGQRCodeHelperTool.h"/>
+    <source-file src="ios/Sources/SGQRCode/SGQRCodeHelperTool.m"/>
+    <header-file src="ios/Sources/SGQRCode/SGQRCodeScanManager.h"/>
+    <source-file src="ios/Sources/SGQRCode/SGQRCodeScanManager.m"/>
+    <header-file src="ios/Sources/SGQRCode/SGQRCodeScanningView.h"/>
+    <source-file src="ios/Sources/SGQRCode/SGQRCodeScanningView.m"/>
+    <resource-file src="ios/Sources/SGQRCode/SGQRCode.bundle" />
+    <framework src="AVFoundation.framework"/>
+    <preference name="CAMERA_USAGE_DESCRIPTION" default=" "/>
+        <config-file parent="NSCameraUsageDescription" target="*-Info.plist">
+            <string>$CAMERA_USAGE_DESCRIPTION</string>
+        </config-file>
+
+        <preference name="PHOTOLIBRARY_USAGE_DESCRIPTION" default=" "/>
+        <config-file parent="NSPhotoLibraryUsageDescription" target="*-Info.plist">
+            <string>$PHOTOLIBRARY_USAGE_DESCRIPTION</string>
+        </config-file>
+    </platform>
+</plugin>
