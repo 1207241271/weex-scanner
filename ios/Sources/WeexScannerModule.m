@@ -7,20 +7,16 @@
 //
 
 #import "WeexScannerModule.h"
-#import <WeexPluginLoader/WeexPluginLoader.h>
 #import "SGQRCodeScanningVC.h"
 #import <AVFoundation/AVFoundation.h>
 
 @implementation WeexScannerModule
 @synthesize weexInstance;
 
-WX_PlUGIN_EXPORT_MODULE(weexScanner, WeexScannerModule)
 WX_EXPORT_METHOD(@selector(scanQR:callBack:))
 - (void)scanQR:(NSString *)title callBack:(WXModuleCallback)callback
 {
-    
     self.callBack=callback;
-    
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     if (device) {
         AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];

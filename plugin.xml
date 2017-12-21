@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin id="weex-xc-scanner"
-        version="0.0.1">
+        version="1.0.1"
+        xmlns:rim="https://github.com/1207241271/weex-scanner.git">
     <name>weex-xc-scanner</name>
-    <author></name>
     <description>weex scanner</description>
     <keywords>weex</keywords>
 
@@ -12,7 +12,7 @@
             <feature name="WeexScannerModule">
                 <param name="category" value="module"/>
                 <param name="ios-package" value="WeexScannerModule"/>
-                <param name="api" value="weex-scanner"/>
+                <param name="api" value="weex-xc-scanner"/>
             </feature>
         </config-file>
 
