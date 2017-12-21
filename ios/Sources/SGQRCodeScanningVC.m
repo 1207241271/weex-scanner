@@ -7,7 +7,7 @@
 //
 
 #import "SGQRCodeScanningVC.h"
-#import "SGQRCode/SGQRCode.h"
+#import "SGQRCode.h"
 
 @interface SGQRCodeScanningVC () <SGQRCodeScanManagerDelegate, SGQRCodeAlbumManagerDelegate>
 @property (nonatomic, strong) SGQRCodeScanManager *manager;
