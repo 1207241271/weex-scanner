@@ -25,11 +25,10 @@ WX_EXPORT_METHOD(@selector(scanQR:callBack:))
                 if (granted) {
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         SGQRCodeScanningVC *vc = [[SGQRCodeScanningVC alloc] init];
-                        UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc ];
-                        nav.navigationBar.barStyle=UIBarStyleBlack;
+                        weexInstance.viewController.navigationController.navigationBarHidden = false;
                         vc.callBack = self.callBack;
                         vc.navigationItem.title =title.length?title:@"扫一扫";
-                        [[weexInstance.viewController navigationController] presentViewController:nav animated:YES completion:nil];
+                        [[weexInstance.viewController navigationController] pushViewController:vc animated:YES];
                     });
                     // 用户第一次同意了访问相机权限
                     NSLog(@"用户第一次同意了访问相机权限 - - %@", [NSThread currentThread]);
@@ -42,12 +41,10 @@ WX_EXPORT_METHOD(@selector(scanQR:callBack:))
             }];
         } else if (status == AVAuthorizationStatusAuthorized) { // 用户允许当前应用访问相机
             SGQRCodeScanningVC *vc = [[SGQRCodeScanningVC alloc] init];
-            UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc ];
-            nav.navigationBar.barStyle=UIBarStyleBlack;
-            
             vc.callBack = self.callBack;
             vc.navigationItem.title =title.length?title:@"扫一扫";
-            [[weexInstance.viewController navigationController] presentViewController:nav animated:YES completion:nil];
+            weexInstance.viewController.navigationController.navigationBarHidden = false;
+            [[weexInstance.viewController navigationController] pushViewController:vc animated:YES];
         } else if (status == AVAuthorizationStatusDenied) { // 用户拒绝当前应用访问相机
             UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相机 - SGQRCodeExample] 打开访问开关" preferredStyle:(UIAlertControllerStyleAlert)];
             UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {

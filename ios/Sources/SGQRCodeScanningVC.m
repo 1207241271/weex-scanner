@@ -99,17 +99,13 @@
     [self.view addSubview:self.scanningView];
 }
 - (void)QRCodeAlbumManager:(SGQRCodeAlbumManager *)albumManager didFinishPickingMediaWithResult:(NSString *)result {
-    self.callBack(@{@"status":@"success",@"result":result});
-    if ([result hasPrefix:@"http"]) {
-//        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
-//        jumpVC.jump_URL = result;
-//        [self.navigationController pushViewController:jumpVC animated:YES];
-        
-    } else {
-//        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
-//        jumpVC.jump_bar_code = result;
-//        [self.navigationController pushViewController:jumpVC animated:YES];
+     if(result == nil){
+        self.callBack(@{@"status":@"error",@"msg":@"未扫描到结果"});
+    }else{
+        self.callBack(@{@"status":@"success",@"result":result});
     }
+    self.navigationController.navigationBarHidden = true;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - - - SGQRCodeScanManagerDelegate
@@ -122,10 +118,8 @@
         
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
         self.callBack(@{@"status":@"success",@"result":[obj stringValue]});
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-//        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
-//        jumpVC.jump_URL = [obj stringValue];
-//        [self.navigationController pushViewController:jumpVC animated:YES];
+        self.navigationController.navigationBarHidden = true;
+        [self.navigationController popViewControllerAnimated:YES];
     } else {
         self.callBack(@{@"status":@"error",@"msg":@"未扫描到结果"});
     }

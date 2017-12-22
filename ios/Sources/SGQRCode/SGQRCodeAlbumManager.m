@@ -124,7 +124,11 @@
         if (self.isOpenLog) {
             SGQRCodeLog(@"暂未识别出扫描的二维码 - - %@", features);
         }
-        [self.currentVC dismissViewControllerAnimated:YES completion:nil];
+        [self.currentVC dismissViewControllerAnimated:YES completion:^{
+            if (self.delegate && [self.delegate respondsToSelector:@selector(QRCodeAlbumManager:didFinishPickingMediaWithResult:)]) {
+                [self.delegate QRCodeAlbumManager:self didFinishPickingMediaWithResult:nil];
+            }
+        }];
         return;
         
     } else {
