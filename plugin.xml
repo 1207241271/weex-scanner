@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin id="weex-xc-scanner"
-        version="1.0.3"
+        version="1.0.7"
         xmlns:rim="https://github.com/1207241271/weex-scanner.git">
     <name>weex-xc-scanner</name>
-    <description>weex scanner</description>
+    <description>weex for scanner</description>
     <keywords>weex</keywords>
 
     <platform name="ios">

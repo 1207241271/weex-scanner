@@ -1,9 +1,9 @@
 {
-    "version": "1.0.3",
+    "version": "1.0.7",
     "platform": [
         "ios"
     ],
-    "description": "weex scanner",
+    "description": "weex for scanner",
     "keywords": [
         "weex"
     ],
