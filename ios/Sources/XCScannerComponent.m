@@ -19,6 +19,7 @@
     CGFloat _cornerWidth;
     CGFloat _backgroudAlpha;
     CornerLocation _cornerLocation;
+    NSString *_scanFinish;
 }
 
 -(instancetype)initWithRef:(NSString *)ref type:(NSString *)type styles:(NSDictionary *)styles attributes:(NSDictionary *)attributes events:(NSArray *)events weexInstance:(WXSDKInstance *)weexInstance{
@@ -38,7 +39,9 @@
         }else{
             _backgroudAlpha = OverFloatValue;
         }
-        
+        if([events containsObject:@"DidFinishScan"]){
+            _scanFinish = @"DidFinishScan";
+        }
     }
     return self;
 }
@@ -97,8 +100,8 @@
         _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height * 0.9)];
         if (_borderColor!=nil) _scanningView.borderColor = _borderColor;
         if (_cornerColor!=nil) _scanningView.cornerColor = _cornerColor;
-        if (_backgroudAlpha!=OverFloatValue) _scanningView.backgroundAlpha = _backgroudAlpha;
-        if (_cornerWidth!=OverFloatValue) _scanningView.cornerWidth = _cornerWidth;
+        if (ABS(_backgroudAlpha-OverFloatValue)>0.001) _scanningView.backgroundAlpha = _backgroudAlpha;
+        if (ABS(_cornerWidth-OverFloatValue)>0.001) _scanningView.cornerWidth = _cornerWidth;
     }
     return _scanningView;
 }
@@ -121,8 +124,14 @@
         [scanManager videoPreviewLayerRemoveFromSuperlayer];
         
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
+        if (_scanFinish) {
+            [self fireEvent:_scanFinish params:@{@"status":@"success",@"result":[obj stringValue]}];
+        }
         //self.callBack(@{@"status":@"success",@"result":[obj stringValue]});
     } else {
+        if (_scanFinish) {
+            [self fireEvent:_scanFinish params:@{@"status":@"error",@"msg":@"未扫描到结果"}];
+        }
         //self.callBack(@{@"status":@"error",@"msg":@"未扫描到结果"});
     }
 }

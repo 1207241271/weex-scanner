@@ -37,7 +37,47 @@ weexpack plugin remove weex-xc-scanner
 | cornerWidth   | float  | 3.5px | 边角宽度         |
 | backgroundAlpha | float|  0.5  | 扫描区周边透明度  |
 
+#### weex-scanner 事件
+**DidFinishScan**
+扫描完成后触发该事件
+事件格式
+```
+{
+    status:"success",result:"HTTPS://QR.ALIPAY.COM/FKX01107IZ4BXSODGROX3A"
+}
+```
 
+#### weex-xc-scanner 模块
+
+##### openFlashlight
++ 打开闪光灯
+
+##### closeFlashlight
++ 关闭闪光灯
+
+##### 使用 weex-xc-scanner 模块
+
+```html
+<template>
+    <div>
+            <text @click="openFlash">打开闪光灯</text>
+            <text @click="closeFlash">关闭闪光灯</text>
+    </div>
+</template>
+<script>
+    const scanner = weex.requireModule("weex-xc-scanner");
+    export default {
+        methods:{
+            openFlash(){
+                scanner.openFlashlight();
+            },
+            closeFlash(){
+                scanner.closeFlashlight();
+            }
+        }
+    }
+</script>
+```
 
 
 
