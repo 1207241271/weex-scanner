@@ -16,10 +16,20 @@
             </feature>
         </config-file>
 
+        <config-file parent="/*" target="WeexpluginConfig.xml">
+            <feature name="XCScannerComponent">
+                <param name="category" value="component"/>
+                <param name="ios-package" value="XCScannerComponent"/>
+                <param name="api" value="weex-scanner"/>
+            </feature>
+        </config-file>
+
     <source-file src="ios/Sources/WeexScannerModule.m"/>
     <header-file src="ios/Sources/WeexScannerModule.h"/>
     <header-file src="ios/Sources/SGQRCodeScanningVC.h"/>
     <source-file src="ios/Sources/SGQRCodeScanningVC.m"/>
+    <header-file src="ios/Sources/XCScannerComponent.h"/>
+    <source-file src="ios/Sources/XCScannerComponent.m"/>
     <header-file src="ios/Sources/SGQRCode/Category/UIImage+ImageSize.h"/>
     <source-file src="ios/Sources/SGQRCode/Category/UIImage+ImageSize.m"/>
     <header-file src="ios/Sources/SGQRCode/SGQRCode.h"/>

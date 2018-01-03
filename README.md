@@ -1,19 +1,43 @@
 # weex-xc-scanner(Test)
-weex-xc-scanner是一个weex插件，可以通过weexpack快速集成，可以丰富weex功能
 
-支持的WeexSDK版本： >= 0.16.0
+一款二维码扫码weex插件，当前版本支持组件基础及模块集成。    
 
-# How to use
 
-const scanner = weex.requireModule("weex-xc-scanner");
+### 快速开始
 
-scanner.scanQR("title",(res) => {
-    let result = JSON.parse(res);
-    if(res.status == "success"){
-        let data = res.result;
-    }else{
-        let errr = res.msg;
+使用方法
+``` bash
+//install
+npm install weex-xc-amap
+weexpack plugin add ./node_modules/weex-xc-amap
+//uninstall
+weexpack plugin remove weex-amap
+```
+
+编辑你的weex文件
+
+``` we
+<template>
+    <weex-scanner class="scanner-page" borderColor="#FbF" cornerColor="#FbF" ></weex-scanner>
+</template>
+<style>
+    .scanner-page{
+        height: 1200px;
+        width: 750px;
     }
-});
+</style>
+```
+
+### API
+#### weex-scanner 属性
+| 属性        | 类型         | Demo  | 描述  |
+| ------------- |:-------------:| -----:|----------:|
+| borderColor   | string | #FFF0 | 边框颜色         |
+| cornerColor   | string | #FFF0 | 边角颜色         |
+| cornerWidth   | float  | 3.5px | 边角宽度         |
+| backgroundAlpha | float|  0.5  | 扫描区周边透明度  |
+
+
+
 
 
