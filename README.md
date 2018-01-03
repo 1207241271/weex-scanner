@@ -8,10 +8,10 @@
 使用方法
 ``` bash
 //install
-npm install weex-xc-amap
-weexpack plugin add ./node_modules/weex-xc-amap
+npm install weex-xc-scanner
+weexpack plugin add ./node_modules/weex-xc-scanner
 //uninstall
-weexpack plugin remove weex-amap
+weexpack plugin remove weex-xc-scanner
 ```
 
 编辑你的weex文件
