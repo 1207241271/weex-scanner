@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin id="weex-xc-scanner"
-        version="1.0.7"
+        version="1.0.8"
         xmlns:rim="https://github.com/1207241271/weex-scanner.git">
     <name>weex-xc-scanner</name>
     <description>weex for scanner</description>

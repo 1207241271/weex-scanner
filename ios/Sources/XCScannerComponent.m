@@ -97,7 +97,7 @@
 
 -(SGQRCodeScanningView *)scanningView {
     if (!_scanningView) {
-        _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height * 0.9)];
+        _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         if (_borderColor!=nil) _scanningView.borderColor = _borderColor;
         if (_cornerColor!=nil) _scanningView.cornerColor = _cornerColor;
         if (ABS(_backgroudAlpha-OverFloatValue)>0.001) _scanningView.backgroundAlpha = _backgroudAlpha;

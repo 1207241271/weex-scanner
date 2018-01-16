@@ -8,12 +8,15 @@
 
 #import "WeexScannerModule.h"
 #import "SGQRCodeScanningVC.h"
+#import "SGQRCodeHelperTool.h"
 #import <AVFoundation/AVFoundation.h>
 
 @implementation WeexScannerModule
 @synthesize weexInstance;
 
 WX_EXPORT_METHOD(@selector(scanQR:callBack:))
+WX_EXPORT_METHOD(@selector(openFlashlight))
+WX_EXPORT_METHOD(@selector(closeFlashlight))
 - (void)scanQR:(NSString *)title callBack:(WXModuleCallback)callback
 {
     self.callBack=callback;
@@ -70,5 +73,10 @@ WX_EXPORT_METHOD(@selector(scanQR:callBack:))
         self.callBack(@{@"status":@"error",@"msg":@"未检测到您的摄像头"});
     }
 }
-
+-(void)openFlashlight{
+    [SGQRCodeHelperTool SG_openFlashlight];
+}
+-(void)closeFlashlight{
+    [SGQRCodeHelperTool SG_CloseFlashlight];
+}
 @end
